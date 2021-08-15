@@ -1,70 +1,15 @@
-# Getting Started with Create React App
+# pixelmatch
+This is my realization [pixelmatch](https://github.com/mapbox/pixelmatch) with Web Workers API
+# points
+* interface of the form (image1, image2) => result, where image1 and image2 are images in the form of an array of points of the format (R, G, B, A), and result is either true if the images are identical, or false if they have they have different sizes, or the number of different pixels, if the pictures differ from each other, but have the same width and height;
+* caching the results of comparing pictures with saving the cache when you restart the browser;
+* comparison of images in additional threads (the number of computational threads should not exceed the number of processor cores) that do not block the processing of the queue of images for comparison;
+* the cache must exist in a single instance, regardless of the number of contexts from which the comparison function is called;
+* the call to the compare function should not increase memory consumption due to the serialization of images when transferring between workers.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# задачи
+* интерфейс вида (image1, image2) => result, где image1 и image2 — это изображения в виде массива точек формата (R,G,B,A), а result — это либо true, если картинки идентичны, либо false, если у них отличаются размеры, либо количество отличающихся пикселов, если картинки отличаются друг от друга, но имеют одинаковые ширину и высоту;
+* кэширование результатов сравнения картинок с сохранением кэша при перезапуске браузера;
+* сравнение картинок в дополнительных потоках (число вычислительных потоков не должно превышать число ядер процессора), не блокирующих обработку очереди картинок на сравнение;
+* кэш должен существовать в единственном экземпляре вне зависимости от количества контекстов, из которых вызывается функция сравнения;
+* вызов функции сравнения не должен увеличивать потребление памяти из-за сериализации картинок при передаче между воркерами.

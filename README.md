@@ -1,5 +1,7 @@
 # pixelmatch
 This is my realization [pixelmatch](https://github.com/mapbox/pixelmatch) with Web Workers API
+
+The app is hosted at [my-pixelmatch](https://pixelmatch-433bf.web.app/)
 # points
 * interface of the form (image1, image2) => result, where image1 and image2 are images in the form of an array of points of the format (R, G, B, A), and result is either true if the images are identical, or false if they have they have different sizes, or the number of different pixels, if the pictures differ from each other, but have the same width and height;
 * caching the results of comparing pictures with saving the cache when you restart the browser;
